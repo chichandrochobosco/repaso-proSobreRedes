@@ -101,9 +101,19 @@ public class Main {
             for(Auto a : runRun){
                 if(a.getId() == id){
                     v.carrito(a);
+                    
+                    
                 }
+                i++;
             }
+            System.out.println("0-seguir compra | otro numero-terminar: ");
+            ingresar = in.nextInt();
+            in.nextLine();
+            
         }while(ingresar==0);
+        
+        System.out.println("El valor total de la venta es de: "+v.facturar());
+        menu();
     }
     public static void main(String[] args) {
         menu();

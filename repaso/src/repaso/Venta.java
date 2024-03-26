@@ -22,4 +22,17 @@ public class Venta {
     public void carrito(Auto auto){
         venta.add(auto);
     }
+    
+    public double facturar(){
+        double importe=0;
+        
+        for(int i=0; i<venta.size();i++){
+            System.out.println("Precio: "+venta.get(i).getPrecio());
+            importe += venta.get(i).getPrecio();
+            venta.remove(i);
+        }
+        
+        
+        return importe;
+    }
 }
