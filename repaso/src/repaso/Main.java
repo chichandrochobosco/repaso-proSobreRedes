@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package repaso;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-/**
- *
- * @author ET36
- */
 
 public class Main {
     Usuario admin = new Usuario("root", "123");
@@ -19,7 +11,7 @@ public class Main {
    public static void menu(){
         Scanner in = new Scanner(System.in);
         int ingreso;
-        System.out.println("Bienvenido, 1-para cargar stock 2-comprar: ");
+        System.out.println("Bienvenido, 1-para cargar stock 2-comprar 3-salir: ");
         ingreso = in.nextInt();
         in.nextLine();
         
@@ -29,11 +21,31 @@ public class Main {
             nom = in.nextLine();
             System.out.println("ingrese contraseña: ");
             con = in.nextLine();
-            if("root".equals(nom) && "123".equals(con)){
-                cargarStock();
-            }   
+            
+            int i=0;
+            while(i == 0){
+                
+                if("root".equals(nom) && "123".equals(con)){
+                    cargarStock();
+                    i++;
+                }else{
+                    System.out.println("ingrese nuevamente el nombre: ");
+                    nom = in.nextLine();
+                    System.out.println("ingrese nuevamente la contraseña: ");
+                    con = in.nextLine();
+                }
+                
+            }
+            
         }else if(ingreso==2){
             comprar();
+        }else if(ingreso ==3){
+            System.exit(0);
+        }else if(ingreso !=1 && ingreso !=2 && ingreso !=3){
+            while(ingreso !=1 && ingreso !=2 && ingreso !=3){
+                System.out.println("Ingrese nuevamente la opcion:");
+                menu();
+            }
         }
         
     }
@@ -75,8 +87,8 @@ public class Main {
         System.out.println("Almacen de autos: ");
         for(/*int i=0; i<runRun.size();i++*/Auto a : runRun){
             System.out.println((a));
-            System.out.println(".............................");
         }
+        System.out.println(".............................");
         menu();
     }
     
@@ -97,15 +109,14 @@ public class Main {
             id = in.nextInt();
             in.nextLine();
             
-            int i=0;
             for(Auto a : runRun){
+                
                 if(a.getId() == id){
                     v.carrito(a);
-                    
-                    
-                }
-                i++;
+                    //runRun.remove(a);
+                }     
             }
+            
             System.out.println("0-seguir compra | otro numero-terminar: ");
             ingresar = in.nextInt();
             in.nextLine();
@@ -113,6 +124,7 @@ public class Main {
         }while(ingresar==0);
         
         System.out.println("El valor total de la venta es de: "+v.facturar());
+        runRun.clear();
         menu();
     }
     public static void main(String[] args) {

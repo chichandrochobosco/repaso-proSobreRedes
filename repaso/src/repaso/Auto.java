@@ -86,7 +86,7 @@ public class Auto {
 
     @Override
     public String toString() {
-        return "Auto: id= "+ id + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", km=" + km + ", color=" + color;
+        return "Auto: id= "+ id + " precio= "+ precio + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", km=" + km + ", color=" + color;
     }
     
     
